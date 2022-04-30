@@ -1,24 +1,24 @@
-//THIS IS THE ENTRY FILE - WRITE YOUR MAIN LOGIC HERE!
+import { Player } from "./playerModule";
+function draw() {
+  var canvas = document.getElementById('myCanvas') as HTMLCanvasElement
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
 
-// import { helloWorld, Beispiel } from "./myModule";
-// import { alertMe } from "./myOtherModule";
+    // grüner Boden
 
-// console.log(helloWorld);
-// customElements.define("my-beispiel", Beispiel);
+    if (ctx) {
 
-// alertMe();
 
-// const myInputValue = document.querySelector<HTMLInputElement>("#myInput");
+      ctx.beginPath();
+      ctx.rect(0, 900, 1200, 150);
+      ctx.fillStyle = 'darkolivegreen';
+      ctx?.fill();
 
-// const myInputValueAlternate = document.querySelector(
-//   "#myInput"
-// ) as HTMLInputElement;
+      const player = new Player();
+      player.drawPlayer(ctx)
+    }
 
-// document
-//   .querySelector<HTMLInputElement>("#myInput")
-//   ?.addEventListener("focus", doSmth);
 
-// function doSmth(e: UIEvent) {
-//   const val = e.target as HTMLInputElement;
-//   console.log(e, val.value);
-// }
+  }
+}
+draw();
