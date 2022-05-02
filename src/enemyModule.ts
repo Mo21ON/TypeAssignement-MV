@@ -1,14 +1,23 @@
 export class Enemys {
+ position: {
+        x: number, y: number
+    }
+    width: number
+    height: number
 
-    drawEnemy(ctx: CanvasRenderingContext2D) {
-        console.log('Hallo');
-        // schwarzer block
-        ctx.beginPath();
-        ctx.rect(120, 820, 70, 80);
-        ctx.fillStyle = 'red';
-        ctx.fill();
+    constructor() 
+    
+    this.position = {
+        x: 500,
+        y: 300
+
+        this.width = 50
+        this.height = 50
+
 
 
 
     }
-}
+
+    var Enemys [];
+

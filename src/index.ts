@@ -1,31 +1,68 @@
 
 import { Player } from "./playerModule";
-import { Enemys} from "./enemyModule";
+import { Enemys } from "./enemyModule";
 
-function draw() {
-    var canvas = document.getElementById('myCanvas') as HTMLCanvasElement
-    if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-
-        //grüner boden
-        
-        if (ctx) {
-
-        
-        ctx.beginPath();
-        ctx.rect(0, 900, 1200, 150);
-        ctx.fillStyle = 'darkolivegreen';
-        ctx?.fill();
-
-        const player = new Player();
-        player.drawPlayer(ctx)
-        }
-    
-
-    }
+var canvas = document.getElementById('myCanvas') as HTMLCanvasElement
+if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
 }
+const player = new Player();
 
-draw();
+function animate() {
+    requestAnimationFrame(animate)
+    if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        player.update(ctx, canvas)
+    }
+    
+}
+animate()
+
+addEventListener('keydown', ({keyCode}) => {     
+    //console.log(keyCode)                 // https://www.toptal.com/developers/keycode damit konnte ich die keycodes heruafinden
+    switch(keyCode) {
+        case 65:
+            console.log('left')
+            player.velocity.x = -15
+            break
+                    case 68:
+                    console.log('right')
+                    player.velocity.x = 15
+                    break
+
+                    case 87:
+                    console.log('up')
+                    player.velocity.y = 0
+                    break
+
+            
+    }
+    console.log(player.velocity)
+})
+
+addEventListener('keyup', ({keyCode}) => {     
+    //console.log(keyCode)                 // https://www.toptal.com/developers/keycode damit konnte ich die keycodes heruafinden
+    switch(keyCode) {
+        case 65:
+            console.log('left')
+            player.velocity.x = 0
+            break
+                    case 68:
+                    console.log('right')
+                    player.velocity.x = 0
+                    break
+
+                    case 87:
+                    console.log('up')
+                    player.velocity.y -= 25
+                    break
+
+            
+    }
+    console.log(player.velocity)
+
+    
+})
 
 
 
