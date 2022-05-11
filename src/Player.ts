@@ -12,7 +12,7 @@ export class Player extends Entity{
         c.fillStyle = 'darkolivegreen'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }}
-
+   
 
 
 
