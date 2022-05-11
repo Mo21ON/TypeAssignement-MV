@@ -9,9 +9,11 @@ body {
 }
 
 #gameover{
-    position: absolute;
-    left: 600px;
-    top: 400px;
+    position: fixed;
+    left: calc(50% - 250px);
+    top: calc(50% - 100px);
+    height: 100px;
+    width: 500px;
     color: burlywood;
     font-size: 35pt;
     text-align: center;
