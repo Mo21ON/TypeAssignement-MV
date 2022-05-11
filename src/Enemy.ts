@@ -6,4 +6,8 @@ export class Enemy extends Entity{
     constructor() {
         super(1000, Math.random() < 0.5 ? 600 : 700, -5, 0, 100, 100);
     }
+    draw(c: CanvasRenderingContext2D) {
+        c.fillStyle = 'black'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
 }

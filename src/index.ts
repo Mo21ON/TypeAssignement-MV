@@ -13,9 +13,11 @@ let enemies: Enemy[] = [];
 let player = new Player();
 
 
+function animate(){}
+
 
 addEventListener('keydown', ({keyCode}) => {     
-    //console.log(keyCode)                 // https://www.toptal.com/developers/keycode damit konnte ich die keycodes heruafinden
+    //console.log(keyCode)             
     switch(keyCode) {
         case 87:
         console.log('up')
