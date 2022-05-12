@@ -13,12 +13,19 @@ let enemies: Enemy[] = [];
 let player = new Player();
 
 
-function animate(){
-    if (!ctx || gameover) {
+function animate() {
+   if (!ctx || gameover) {
         return;
     }
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    player.update(ctx, canvas)
+    if(lastEnemyTime + timeBetweenEnemies < Date.now()){
+        //spawn of enemy
+        console.log("spawn");
+        enemies.push(new Enemy());
+        lastEnemyTime = Date.now();
 }
-
+}
 
 
 addEventListener('keydown', ({keyCode}) => {     

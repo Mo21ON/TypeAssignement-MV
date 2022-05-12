@@ -30,6 +30,5 @@ export class Player extends Entity{
             this.velocity.y = 0
         }
        
-
     }
 }
