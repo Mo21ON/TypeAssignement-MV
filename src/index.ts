@@ -28,6 +28,7 @@ function animate() {
 }
 
 
+
 addEventListener('keydown', ({keyCode}) => {     
     //console.log(keyCode)             
     switch(keyCode) {
