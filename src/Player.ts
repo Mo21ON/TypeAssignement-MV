@@ -11,11 +11,11 @@ export class Player extends Entity{
     draw(c: CanvasRenderingContext2D) {
         c.fillStyle = 'darkolivegreen'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    }}
+    }
    
+    update(c: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+        this.draw(c)
+       
 
-
-
-
-
-
+    }
+}
