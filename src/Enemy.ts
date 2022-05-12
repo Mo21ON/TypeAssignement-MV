@@ -10,4 +10,10 @@ export class Enemy extends Entity{
         c.fillStyle = 'black'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
+    
+    update(c: CanvasRenderingContext2D) {
+        this.draw(c)
+        this.position.x += this.velocity.x
+    }
 }
+
