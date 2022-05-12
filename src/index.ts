@@ -25,9 +25,12 @@ function animate() {
         enemies.push(new Enemy());
         lastEnemyTime = Date.now();
 }
+for(let key in enemies){
+    let enemy = enemies[key];
+    //update der enemy positions
+    enemy.update(ctx);
 }
-
-
+}
 
 addEventListener('keydown', ({keyCode}) => {     
     //console.log(keyCode)             
