@@ -13,7 +13,12 @@ let enemies: Enemy[] = [];
 let player = new Player();
 
 
-function animate(){}
+function animate(){
+    if (!ctx || gameover) {
+        return;
+    }
+}
+
 
 
 addEventListener('keydown', ({keyCode}) => {     
