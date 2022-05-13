@@ -1,50 +1,34 @@
+import {Entity} from "./Entity";
 
-export class Player {
-    position: {
-        x: number, y: number
-    }
-    velocity: {
-        x: number, y: number
-    }
-    width: number
-    height: number
-    gravity = 0.7
+export class Player extends Entity{
+    jumpTime: number | null = null
+    gravity = 0.2
+
     constructor() {
-
-        this.position = {
-            x: 100,
-            y: 100
-        }
-        this.velocity = {
-            x: 0,
-            y: 0
-        }
-        this.width = 50
-        this.height = 50
-
+        super(100, 100, 0, 0, 50, 50)
     }
 
     draw(c: CanvasRenderingContext2D) {
         c.fillStyle = 'darkolivegreen'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
-
+   
     update(c: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
         this.draw(c)
+
+        if(this.jumpTime && this.jumpTime + 200 < Date.now()){
+            this.jumpTime = null;
+        }
+        if(this.jumpTime){
+            this.velocity.y = -6;
+        }
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
-
         if (this.position.y + this.height + this.velocity.y <= canvas.height)
             this.velocity.y += this.gravity
-        else this.velocity.y = 0
+        else {
+            this.velocity.y = 0
+        }
+       
     }
 }
-
-
-
-
-
-
-
-
-
