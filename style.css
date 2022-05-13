@@ -2,16 +2,37 @@ body {
     background-color: burlywood;
 
 }
+
+#main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#gameover{
+    position: fixed;
+    left: calc(50% - 250px);
+    top: calc(50% - 100px);
+    height: 100px;
+    width: 500px;
+    color: burlywood;
+    font-size: 35pt;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#score{
+    font-family: Helvetica, sans-serif;
+    font-size: 30pt;
+    font-weight: bold;
+}
+
 #myCanvas {
     background-color: beige;
     position: relative;
     padding: 0;
     margin: auto;
     top: 60px;
-    display: block;
-    width: 1200px;
-    height: 800px;
     display: flex;
     border: 2px solid black;
-
 }
