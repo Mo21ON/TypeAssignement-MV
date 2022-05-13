@@ -30,9 +30,23 @@ for(let key in enemies){
 
 }
 
+
 requestAnimationFrame(animate)
+
 }
 
+
+//delete enemies when outside canvas
+let lenBefore = enemies.length;
+enemies = enemies.filter((en: Enemy) => !en.toDelete); 
+let lenAfter = enemies.length;
+if(lenBefore !== lenAfter){
+    score += lenBefore-lenAfter;
+    console.log("score: ", score);
+    if(timeBetweenEnemies - removeTimePerScore > 200){
+        timeBetweenEnemies -= removeTimePerScore;
+    }
+}
 
 addEventListener('keydown', ({keyCode}) => {     
     //console.log(keyCode)             
