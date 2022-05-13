@@ -42,9 +42,16 @@ enemies = enemies.filter((en: Enemy) => !en.toDelete);
 let lenAfter = enemies.length;
 if(lenBefore !== lenAfter){
     score += lenBefore-lenAfter;
+    updateUi()
     console.log("score: ", score);
     if(timeBetweenEnemies - removeTimePerScore > 200){
         timeBetweenEnemies -= removeTimePerScore;
+    }
+    function updateUi(){
+        let scoreP = document.getElementById("score") as HTMLParagraphElement;
+        scoreP.innerText = `Score: ${score}`;
+    
+        //DOM Manipulation
     }
 }
 
