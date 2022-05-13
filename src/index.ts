@@ -27,6 +27,15 @@ for(let key in enemies){
     let enemy = enemies[key];
     //update der enemy positions
     enemy.update(ctx);
+     //check for collision de, if yes: game over
+     if(player.hasCollided(enemy)){
+        gameover = true;
+        return;
+    }
+    //mark for delete if outside canvas
+    if(enemy.position.x <= -50){
+        enemy.toDelete = true;
+    }
 
 }
 
@@ -54,6 +63,19 @@ function updateUi(){
     
         //DOM Manipulation
     }
+}
+
+function restart() {
+    let parent = document.getElementById("gameover") as HTMLDivElement;
+    parent.innerHTML = '';
+    gameover = false;
+    timeBetweenEnemies = 2000;
+    score = 0;
+    removeTimePerScore = 20;
+    lastEnemyTime = Date.now();
+    enemies = [];
+    player = new Player();
+    requestAnimationFrame(animate);
 }
 
 addEventListener('keydown', ({keyCode}) => {     
