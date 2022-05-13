@@ -30,11 +30,7 @@ for(let key in enemies){
 
 }
 
-
-requestAnimationFrame(animate)
-
 }
-
 
 //delete enemies when outside canvas
 let lenBefore = enemies.length;
@@ -46,8 +42,13 @@ if(lenBefore !== lenAfter){
     console.log("score: ", score);
     if(timeBetweenEnemies - removeTimePerScore > 200){
         timeBetweenEnemies -= removeTimePerScore;
-    }
-    function updateUi(){
+    
+    
+}
+
+requestAnimationFrame(animate)
+   
+function updateUi(){
         let scoreP = document.getElementById("score") as HTMLParagraphElement;
         scoreP.innerText = `Score: ${score}`;
     
