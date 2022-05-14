@@ -10,7 +10,7 @@ let score = 0;
 let lastEnemyTime = Date.now();
 let enemies: Enemy[] = [];
 let player = new Player();
-// letzter Commit war animate
+
 function animate() {
     if (!ctx || gameover) {
         return;
@@ -18,14 +18,14 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     player.update(ctx, canvas)
     if (lastEnemyTime + timeBetweenEnemies < Date.now()) {
-        //spawn of enemy
+        //spawn of the enemies
         console.log("spawn");
         enemies.push(new Enemy());
         lastEnemyTime = Date.now();
     }
     for (let key in enemies) {
         let enemy = enemies[key];
-        //update enemy positions
+        //update of enemy positions
         enemy.update(ctx);
         //check for collision, if yes: game over
         if (player.hasCollided(enemy)) {
@@ -86,7 +86,7 @@ function updateUi() {
     let scoreP = document.getElementById("score") as HTMLParagraphElement;
     scoreP.innerText = `Score: ${score}`;
 
-    //DOM Manipulation
+    //HighScore DOM Manipulation
 }
 
 addEventListener('keydown', ({ keyCode }) => {

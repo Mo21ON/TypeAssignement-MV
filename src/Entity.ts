@@ -22,7 +22,7 @@ export class Entity {
     }
 
     hasCollided(entity: Entity) {
-        //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        // hilfe für die collision detection https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection & Hilfestellung von Arbeitskollegen
         return this.position.x < entity.position.x + entity.width &&
             this.position.x + this.width > entity.position.x &&
             this.position.y < entity.position.y + entity.height &&
