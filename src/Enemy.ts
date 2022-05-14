@@ -1,6 +1,6 @@
-import { Entity } from "./Entity";
+import {Entity} from "./Entity";
 
-export class Enemy extends Entity {
+export class Enemy extends Entity{
     toDelete: boolean = false
 
     constructor() {
@@ -17,4 +17,12 @@ export class Enemy extends Entity {
         this.position.x += this.velocity.x
     }
 }
+
+
+
+
+
+
+
+
 

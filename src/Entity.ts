@@ -7,6 +7,7 @@ export class Entity {
     }
     width: number
     height: number
+
     constructor(x: number, y: number, xV: number, yV: number, width: number, height: number) {
         this.position = {
             x,
@@ -19,7 +20,6 @@ export class Entity {
         this.width = width
         this.height = height
     }
-
 
     hasCollided(entity: Entity) {
         //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection

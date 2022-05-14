@@ -10,7 +10,7 @@ let score = 0;
 let lastEnemyTime = Date.now();
 let enemies: Enemy[] = [];
 let player = new Player();
-
+// letzter Commit war animate
 function animate() {
     if (!ctx || gameover) {
         return;
@@ -25,20 +25,20 @@ function animate() {
     }
     for (let key in enemies) {
         let enemy = enemies[key];
-        //update der enemy positions
+        //update enemy positions
         enemy.update(ctx);
         //check for collision, if yes: game over
         if (player.hasCollided(enemy)) {
-            displayGameover();
             gameover = true;
+            displayGameover();
             return;
         }
-        // for delete if enemy outside canvas
+        //mark for delete if outside canvas
         if (enemy.position.x <= -50) {
             enemy.toDelete = true;
         }
     }
-    //delete enemies when outside canvas
+    //delete enemies if outside canvas
     let lenBefore = enemies.length;
     enemies = enemies.filter((en: Enemy) => !en.toDelete);
     let lenAfter = enemies.length;
@@ -104,3 +104,6 @@ addEventListener('keydown', ({ keyCode }) => {
 addEventListener('keyup', ({ keyCode }) => {
 
 })
+
+
+

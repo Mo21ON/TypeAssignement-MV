@@ -14,7 +14,7 @@ body {
     top: calc(50% - 100px);
     height: 100px;
     width: 500px;
-    color: burlywood;
+    color: #deb887;
     font-size: 35pt;
     text-align: center;
     font-family: Helvetica, sans-serif;
@@ -28,7 +28,7 @@ body {
 }
 
 #myCanvas {
-    background-color: beige;
+    background-color: #f5f5dc;
     position: relative;
     padding: 0;
     margin: auto;
