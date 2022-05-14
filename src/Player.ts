@@ -1,6 +1,6 @@
-import {Entity} from "./Entity";
+import { Entity } from "./Entity";
 
-export class Player extends Entity{
+export class Player extends Entity {
     jumpTime: number | null = null
     gravity = 0.2
 
@@ -12,14 +12,14 @@ export class Player extends Entity{
         c.fillStyle = 'darkolivegreen'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
-   
+
     update(c: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
         this.draw(c)
 
-        if(this.jumpTime && this.jumpTime + 200 < Date.now()){
+        if (this.jumpTime && this.jumpTime + 200 < Date.now()) {
             this.jumpTime = null;
         }
-        if(this.jumpTime){
+        if (this.jumpTime) {
             this.velocity.y = -6;
         }
         this.position.x += this.velocity.x
@@ -29,6 +29,6 @@ export class Player extends Entity{
         else {
             this.velocity.y = 0
         }
-       
+
     }
 }

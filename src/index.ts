@@ -1,5 +1,5 @@
-import {Enemy} from "./Enemy";
-import {Player} from "./Player";
+import { Enemy } from "./Enemy";
+import { Player } from "./Player";
 
 let canvas = document.getElementById('myCanvas') as HTMLCanvasElement
 let ctx = canvas.getContext('2d');
@@ -12,50 +12,50 @@ let enemies: Enemy[] = [];
 let player = new Player();
 
 function animate() {
-   if (!ctx || gameover) {
+    if (!ctx || gameover) {
         return;
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     player.update(ctx, canvas)
-    if(lastEnemyTime + timeBetweenEnemies < Date.now()){
+    if (lastEnemyTime + timeBetweenEnemies < Date.now()) {
         //spawn of enemy
         console.log("spawn");
         enemies.push(new Enemy());
         lastEnemyTime = Date.now();
-}
-for(let key in enemies){
-    let enemy = enemies[key];
-    //update der enemy positions
-    enemy.update(ctx);
-     //check for collision, if yes: game over
-     if(player.hasCollided(enemy)){
-        displayGameover();
-        gameover = true;
-        return;
     }
-    // for delete if enemy outside canvas
-    if(enemy.position.x <= -50){
-        enemy.toDelete = true;
+    for (let key in enemies) {
+        let enemy = enemies[key];
+        //update der enemy positions
+        enemy.update(ctx);
+        //check for collision, if yes: game over
+        if (player.hasCollided(enemy)) {
+            displayGameover();
+            gameover = true;
+            return;
+        }
+        // for delete if enemy outside canvas
+        if (enemy.position.x <= -50) {
+            enemy.toDelete = true;
+        }
     }
-}
-//delete enemies when outside canvas
-let lenBefore = enemies.length;
-enemies = enemies.filter((en: Enemy) => !en.toDelete); 
-let lenAfter = enemies.length;
-if(lenBefore !== lenAfter){
-    score += lenBefore-lenAfter;
-    updateUi()
-    console.log("score: ", score);
-    if(timeBetweenEnemies - removeTimePerScore > 200){
-        timeBetweenEnemies -= removeTimePerScore;
+    //delete enemies when outside canvas
+    let lenBefore = enemies.length;
+    enemies = enemies.filter((en: Enemy) => !en.toDelete);
+    let lenAfter = enemies.length;
+    if (lenBefore !== lenAfter) {
+        score += lenBefore - lenAfter;
+        updateUi()
+        console.log("score: ", score);
+        if (timeBetweenEnemies - removeTimePerScore > 200) {
+            timeBetweenEnemies -= removeTimePerScore;
+        }
     }
-}
 
-  requestAnimationFrame(animate)
-}   
+    requestAnimationFrame(animate)
+}
 requestAnimationFrame(animate);
 
-function displayGameover(){
+function displayGameover() {
     let parent = document.getElementById("gameover") as HTMLDivElement;
     let text = document.createElement("p") as HTMLParagraphElement;
     text.innerText = "GAME OVER!";
@@ -82,25 +82,25 @@ function restart() {
 }
 
 
-function updateUi(){
+function updateUi() {
     let scoreP = document.getElementById("score") as HTMLParagraphElement;
     scoreP.innerText = `Score: ${score}`;
 
     //DOM Manipulation
 }
 
-addEventListener('keydown', ({keyCode}) => {     
+addEventListener('keydown', ({ keyCode }) => {
     //console.log(keyCode)             
-    switch(keyCode) {
+    switch (keyCode) {
         case 87:
-        console.log('up')
-        if(!player.jumpTime && player.velocity.y === 0){
-            player.jumpTime = Date.now();
-        }
-        break
+            console.log('up')
+            if (!player.jumpTime && player.velocity.y === 0) {
+                player.jumpTime = Date.now();
+            }
+            break
     }
 })
 
-addEventListener('keyup', ({keyCode}) => {
-    
+addEventListener('keyup', ({ keyCode }) => {
+
 })

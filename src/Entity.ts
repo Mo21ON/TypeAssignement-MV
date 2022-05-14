@@ -1,4 +1,4 @@
-export class Entity{
+export class Entity {
     position: {
         x: number, y: number
     }
@@ -21,11 +21,11 @@ export class Entity{
     }
 
 
-hasCollided(entity: Entity){
-    //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-    return this.position.x < entity.position.x + entity.width &&
-        this.position.x + this.width > entity.position.x &&
-        this.position.y < entity.position.y + entity.height &&
-        this.height + this.position.y > entity.position.y;
+    hasCollided(entity: Entity) {
+        //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        return this.position.x < entity.position.x + entity.width &&
+            this.position.x + this.width > entity.position.x &&
+            this.position.y < entity.position.y + entity.height &&
+            this.height + this.position.y > entity.position.y;
     }
 }
