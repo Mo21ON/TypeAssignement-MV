@@ -27,20 +27,17 @@ for(let key in enemies){
     let enemy = enemies[key];
     //update der enemy positions
     enemy.update(ctx);
-     //check for collision de, if yes: game over
+     //check for collision, if yes: game over
      if(player.hasCollided(enemy)){
+        displayGameover();
         gameover = true;
         return;
     }
-    //mark for delete if outside canvas
+    // for delete if enemy outside canvas
     if(enemy.position.x <= -50){
         enemy.toDelete = true;
     }
-
 }
-
-}
-
 //delete enemies when outside canvas
 let lenBefore = enemies.length;
 enemies = enemies.filter((en: Enemy) => !en.toDelete); 
@@ -51,18 +48,24 @@ if(lenBefore !== lenAfter){
     console.log("score: ", score);
     if(timeBetweenEnemies - removeTimePerScore > 200){
         timeBetweenEnemies -= removeTimePerScore;
-    
-    
+    }
 }
 
-requestAnimationFrame(animate)
-   
-function updateUi(){
-        let scoreP = document.getElementById("score") as HTMLParagraphElement;
-        scoreP.innerText = `Score: ${score}`;
-    
-        //DOM Manipulation
-    }
+  requestAnimationFrame(animate)
+}   
+requestAnimationFrame(animate);
+
+function displayGameover(){
+    let parent = document.getElementById("gameover") as HTMLDivElement;
+    let text = document.createElement("p") as HTMLParagraphElement;
+    text.innerText = "GAME OVER!";
+    let btn = document.createElement("button") as HTMLButtonElement;
+    btn.innerText = "Restart game";
+    btn.addEventListener("click", restart);
+    parent.appendChild(text);
+    parent.appendChild(btn);
+
+    // hier entsteht der GameOver Button & DOM Manipulation
 }
 
 function restart() {
@@ -76,6 +79,14 @@ function restart() {
     enemies = [];
     player = new Player();
     requestAnimationFrame(animate);
+}
+
+
+function updateUi(){
+    let scoreP = document.getElementById("score") as HTMLParagraphElement;
+    scoreP.innerText = `Score: ${score}`;
+
+    //DOM Manipulation
 }
 
 addEventListener('keydown', ({keyCode}) => {     
